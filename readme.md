@@ -4,12 +4,11 @@
 
 ## 使用
 
-    - 返回JSON格式：
-        ```
-        http://localhost:3344/{server}
-        ```
-    - 直接返回状态true或false：
-        ```
-        http://localhost:3344/status/{server}
-        ```
-    其中 `{server}` 不加端口为imcp ping 加端口为tcp ping
+- 返回 JSON 格式：
+  ```
+  http://localhost:3344/{server}
+  ```
+- 直接返回状态 true 或 false：
+  `    http://localhost:3344/status/{server}
+   `
+  其中 `{server}` 不加端口为 imcp ping 加端口为 tcp ping
