@@ -23,10 +23,8 @@ Description=Keep contcp running
 After=network.target
 
 [Service]
-ExecStart=/bin/bash /home/your_user/contcp
+ExecStart=/root/contcp
 Restart=always
-User=your_user
-WorkingDirectory=/home/your_user
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=contcp
