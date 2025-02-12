@@ -13,3 +13,30 @@
   http://localhost:3344/status/{server}
   ```
   其中 `{server}` 不加端口为 imcp ping 加端口为 tcp ping
+
+## systemctl
+```bash
+sudo nano /etc/systemd/system/contcp.service
+
+[Unit]
+Description=Keep contcp running
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /home/your_user/contcp
+Restart=always
+User=your_user
+WorkingDirectory=/home/your_user
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=contcp
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+
+sudo systemctl start contcp.service
+
+sudo systemctl enable contcp.service
+```
