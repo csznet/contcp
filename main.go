@@ -37,13 +37,25 @@ func main() {
 
 func CheckServer(uri string) result {
 	var res result
+	successCount := 0
 	if strings.Count(uri, ":") == 0 {
 		// 使用 ICMP ping
-		res = pingServer(uri)
+		for i := 0; i < 3; i++ {
+			if pingServer(uri).Status {
+				successCount++
+			}
+		}
 	} else {
 		// 使用 TCP 连接
-		res = tcpCheckServer(uri)
+		for i := 0; i < 3; i++ {
+			if tcpCheckServer(uri).Status {
+				successCount++
+			}
+		}
 	}
+	res.Host = uri
+	res.Status = successCount >= 1
+	res.TimeStamp = time.Now().String()
 	return res
 }
 
